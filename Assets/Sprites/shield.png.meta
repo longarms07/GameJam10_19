@@ -113,12 +113,12 @@ TextureImporter:
       name: shield_0
       rect:
         serializedVersion: 2
-        x: 54
-        y: 53
-        width: 20
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 5
+        y: 10
+        width: 123
+        height: 97
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5898986}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,12 +134,12 @@ TextureImporter:
       name: shield_1
       rect:
         serializedVersion: 2
-        x: 167
-        y: 37
-        width: 52
-        height: 45
+        x: 133
+        y: 10
+        width: 120
+        height: 97
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,12 +155,12 @@ TextureImporter:
       name: shield_2
       rect:
         serializedVersion: 2
-        x: 258
-        y: 9
-        width: 123
+        x: 261
+        y: 10
+        width: 120
         height: 97
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -176,12 +176,12 @@ TextureImporter:
       name: shield_3
       rect:
         serializedVersion: 2
-        x: 389
+        x: 390
         y: 10
         width: 120
         height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -197,12 +197,12 @@ TextureImporter:
       name: shield_4
       rect:
         serializedVersion: 2
-        x: 566
-        y: 53
-        width: 20
-        height: 20
+        x: 517
+        y: 10
+        width: 120
+        height: 97
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -218,12 +218,12 @@ TextureImporter:
       name: shield_5
       rect:
         serializedVersion: 2
-        x: 679
-        y: 37
-        width: 52
-        height: 45
+        x: 645
+        y: 10
+        width: 120
+        height: 97
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -244,7 +244,7 @@ TextureImporter:
         width: 120
         height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -265,7 +265,7 @@ TextureImporter:
         width: 120
         height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
