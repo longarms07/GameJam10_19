@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6190305559219688750}
   - component: {fileID: 6190305559219688749}
   - component: {fileID: 6190305559219688755}
+  - component: {fileID: -32880466640527243}
   - component: {fileID: 7346427816543613670}
   m_Layer: 8
   m_Name: Shield_Red
@@ -104,6 +105,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-32880466640527243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6190305559219688754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb60b4dbef00a4a4587651307951109d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frameRate: 4
+  s0: {fileID: 2389193319765324094, guid: e81fc83863ad3784085a9f81375009a1, type: 3}
+  s1: {fileID: 5085415284296604745, guid: e81fc83863ad3784085a9f81375009a1, type: 3}
+  s2: {fileID: 1691966074973790518, guid: e81fc83863ad3784085a9f81375009a1, type: 3}
+  s3: {fileID: -4135836072091612975, guid: e81fc83863ad3784085a9f81375009a1, type: 3}
+  setActive: 0
 --- !u!58 &7346427816543613670
 CircleCollider2D:
   m_ObjectHideFlags: 0

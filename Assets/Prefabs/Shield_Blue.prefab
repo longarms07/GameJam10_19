@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1610228830088652334}
   - component: {fileID: 1610228830088652336}
   - component: {fileID: 2757062378293936613}
+  - component: {fileID: 4030919556822949319}
   m_Layer: 8
   m_Name: Shield_Blue
   m_TagString: Untagged
@@ -120,3 +121,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
+--- !u!114 &4030919556822949319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610228830088652337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb60b4dbef00a4a4587651307951109d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frameRate: 4
+  s0: {fileID: -7604838462600041511, guid: e81fc83863ad3784085a9f81375009a1, type: 3}
+  s1: {fileID: -2326387718176073400, guid: e81fc83863ad3784085a9f81375009a1, type: 3}
+  s2: {fileID: -7640969164507117352, guid: e81fc83863ad3784085a9f81375009a1, type: 3}
+  s3: {fileID: 7640822524586941387, guid: e81fc83863ad3784085a9f81375009a1, type: 3}
+  setActive: 0
