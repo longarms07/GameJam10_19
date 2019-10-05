@@ -455,6 +455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   flightSpeed: 0
+  rotateSpeed: 0
   hitPoints: 100
   isCarrying: 0
   walkLeft0: {fileID: -7433986902432109443, guid: 621242efd6e9ce643b54fa208580d0be,
@@ -602,10 +603,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc73eb93b5d304ea28bbc21d6ba49e15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 1
   rotateSpeed: 3
-  retreatThreshold: 5
-  retreatUntil: 10
+  retreatThreshold: 10
+  retreatUntil: 30
 --- !u!61 &1714861575
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class EnemyShipController : MonoBehaviour
 {
     private Rigidbody2D rb2d;
@@ -10,6 +11,7 @@ public class EnemyShipController : MonoBehaviour
     public float rotateSpeed;
     public float retreatThreshold;
     public float retreatUntil;
+    public float retreatMultiplier;
 
     private bool retreat;
 
@@ -33,17 +35,18 @@ public class EnemyShipController : MonoBehaviour
         else if (Vector2.Distance(transform.position, target) >= retreatUntil)
         {
             retreat = false;
+            rb2d.velocity = Vector2.zero;
         }
 
         if (retreat)
         {
-            rb2d.AddForce(-offsetFromTarget * speed);
+            rb2d.AddForce(offsetFromTarget.normalized * retreatMultiplier * speed);
         }
         else {
-            rb2d.AddForce(offsetFromTarget * speed);
+            rb2d.AddForce(offsetFromTarget.normalized * -speed);
         }
-        
 
+        
 
     }
 
