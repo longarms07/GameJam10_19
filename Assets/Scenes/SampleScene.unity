@@ -483,6 +483,7 @@ MonoBehaviour:
   animationFrameRate: 5
   raycastDistance: 3
   partOffset: 1
+  playerShip: {fileID: 0}
 --- !u!1 &1714861570
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,7 +661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionKey: e
-  player: {fileID: 0}
+  player: {fileID: 1122349496}
 --- !u!4 &1821164498
 Transform:
   m_ObjectHideFlags: 0

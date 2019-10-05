@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        ship = playerShip.GetComponent<PlayerShip>();
+        if(playerShip!=null) ship = playerShip.GetComponent<PlayerShip>();
 
         GameManager.getInstance().player = this.gameObject;
     }
@@ -153,18 +153,21 @@ public class PlayerController : MonoBehaviour
 
     public void CheckForShip()
     {
-        RaycastHit2D hit;
-        if (lookingLeft) hit = Physics2D.CircleCast(this.gameObject.transform.localPosition, this.gameObject.transform.localScale.y / 2, Vector3.left, 0, LayerMask.GetMask("PlayerShip"));
-        else hit = Physics2D.CircleCast(this.gameObject.transform.localPosition, this.gameObject.transform.localScale.y / 2, Vector3.right, 0, LayerMask.GetMask("PlayerShip"));
-
-        if (hit.collider != null)
+        if (playerShip != null)
         {
-            if (ship.AddPart(heldPart))
+            RaycastHit2D hit;
+            if (lookingLeft) hit = Physics2D.CircleCast(this.gameObject.transform.localPosition, this.gameObject.transform.localScale.y / 2, Vector3.left, 0, LayerMask.GetMask("PlayerShip"));
+            else hit = Physics2D.CircleCast(this.gameObject.transform.localPosition, this.gameObject.transform.localScale.y / 2, Vector3.right, 0, LayerMask.GetMask("PlayerShip"));
+
+            if (hit.collider != null)
             {
-                Destroy(heldPart);
-                isCarrying = false;
+                if (ship.AddPart(heldPart))
+                {
+                    Destroy(heldPart);
+                    isCarrying = false;
+                }
+                else PutDownPart();
             }
-            else PutDownPart();
         }
     }
 

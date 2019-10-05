@@ -74,7 +74,6 @@ public class PlayerShip : MonoBehaviour
         }
 
         partAttached[shipPart.kind] = true;
-        Debug.Log(shipPart.kind);
         switch (shipPart.kind)
         {
             case (ShipPartEnum.LGun):
