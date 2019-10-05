@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager g;
 
+    public string interactionKey;
     public GameObject player;
 
     private GameManager() {

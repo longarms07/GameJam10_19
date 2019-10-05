@@ -23,9 +23,14 @@ public class PlayerController : MonoBehaviour
     public Sprite standHoldRight;
 
     public int animationFrameRate;
+
+    public float raycastDistance;
+    public float partOffset;
+
     private int currentFrame;
     private float lastMoveDir;
     private bool lookingLeft = true;
+    private GameObject heldPart = null;
 
     private SpriteRenderer spriteRenderer;
     private bool sprite0;
@@ -114,5 +119,31 @@ public class PlayerController : MonoBehaviour
         Vector2 movement = new Vector2(moveHorizontal, 0);
 
         rb2d.AddForce(movement * speed);
+        if (isCarrying && heldPart != null)
+        {
+            if (lookingLeft) heldPart.transform.localPosition = this.gameObject.transform.localPosition + new Vector3(0, partOffset, 1);
+            else heldPart.transform.localPosition = this.gameObject.transform.localPosition + new Vector3(0, partOffset, 1);
+        }
+        if (Input.GetKeyDown(GameManager.getInstance().interactionKey))
+        {
+            if(!isCarrying)
+                CheckForPart();
+        }
     }
+
+    public void CheckForPart()
+    {
+
+        RaycastHit2D hit;
+        if (lookingLeft) hit = Physics2D.CircleCast(this.gameObject.transform.localPosition, this.gameObject.transform.localScale.y/2, Vector3.left, raycastDistance, LayerMask.GetMask("ShipPart"));
+        else hit = Physics2D.CircleCast(this.gameObject.transform.localPosition, this.gameObject.transform.localScale.y / 2, Vector3.right, raycastDistance, LayerMask.GetMask("ShipPart"));
+
+        if (hit.collider != null)
+        {
+            isCarrying = true;
+            heldPart = hit.collider.gameObject;
+            heldPart.GetComponent<Rigidbody2D>().gravityScale = 0;
+        }
+    }
+
 }
