@@ -43,7 +43,7 @@ public class EnemyShipController : MonoBehaviour
             rb2d.AddForce(offsetFromTarget.normalized * retreatMultiplier * speed);
         }
         else {
-            rb2d.AddForce(offsetFromTarget.normalized * -speed);
+            rb2d.velocity = offsetFromTarget.normalized * -speed;
         }
 
         
