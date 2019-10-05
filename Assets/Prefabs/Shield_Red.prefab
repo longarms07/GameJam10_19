@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6190305559219688750}
+  - component: {fileID: 2577900536205293902}
   - component: {fileID: 6190305559219688749}
   - component: {fileID: 6190305559219688755}
   - component: {fileID: -32880466640527243}
@@ -34,6 +35,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2577900536205293902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6190305559219688754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cf60f7c737772841a459bea9d87668d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 2389193319765324094, guid: e81fc83863ad3784085a9f81375009a1, type: 3}
+  shieldAnims:
+  - {fileID: 5085415284296604745, guid: e81fc83863ad3784085a9f81375009a1, type: 3}
+  - {fileID: 1691966074973790518, guid: e81fc83863ad3784085a9f81375009a1, type: 3}
+  - {fileID: -4135836072091612975, guid: e81fc83863ad3784085a9f81375009a1, type: 3}
+  kind: 5
 --- !u!212 &6190305559219688749
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -117,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb60b4dbef00a4a4587651307951109d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frameRate: 4
+  frameRate: 6
   s0: {fileID: 2389193319765324094, guid: e81fc83863ad3784085a9f81375009a1, type: 3}
   s1: {fileID: 5085415284296604745, guid: e81fc83863ad3784085a9f81375009a1, type: 3}
   s2: {fileID: 1691966074973790518, guid: e81fc83863ad3784085a9f81375009a1, type: 3}
@@ -136,6 +155,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.02275908, y: 0.046595365}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.10264656

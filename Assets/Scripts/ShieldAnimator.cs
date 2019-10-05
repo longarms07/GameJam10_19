@@ -10,10 +10,10 @@ public class ShieldAnimator : MonoBehaviour
     public Sprite s1;
     public Sprite s2;
     public Sprite s3;
-    public bool setActive;
+    public bool setActive = false;
     private int currentFrame;
     private SpriteRenderer spriteRenderer;
-    private bool active;
+    private bool active = false;
 
 
     // Start is called before the first frame update
