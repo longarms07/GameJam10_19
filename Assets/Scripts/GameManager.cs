@@ -13,9 +13,16 @@ public class GameManager : MonoBehaviour
     }
 
     public static GameManager getInstance() {
-        if (g == null) {
-            g = new GameManager();
-        }
+        
         return g;
     }
+
+    private void Awake()
+    {
+        if (g == null)
+        {
+            g = this;
+        }
+    }
+
 }
