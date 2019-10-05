@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8236833435585940744}
   - component: {fileID: 8236833435585940758}
   - component: {fileID: 6918500183884014583}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Engine_Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}

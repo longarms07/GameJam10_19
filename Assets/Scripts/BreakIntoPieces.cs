@@ -15,7 +15,7 @@ public class BreakIntoPieces : MonoBehaviour
     }
 
 
-    private void OnDestroy()
+    public void SpawnParts()
     {
         if(shipPieces.Count > 0)
         {

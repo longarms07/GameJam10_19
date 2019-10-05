@@ -17,11 +17,15 @@ public class PlayerController : MonoBehaviour
     public Sprite holdLeft1;
     public Sprite holdRight0;
     public Sprite holdRight1;
-    public Sprite stand;
+    public Sprite standRight;
+    public Sprite standLeft;
+    public Sprite standHoldLeft;
+    public Sprite standHoldRight;
 
     public int animationFrameRate;
     private int currentFrame;
     private float lastMoveDir;
+    private bool lookingLeft = true;
 
     private SpriteRenderer spriteRenderer;
     private bool sprite0;
@@ -46,7 +50,8 @@ public class PlayerController : MonoBehaviour
 
         if(moveHorizontal < 0)
         {
-            if(lastMoveDir >= 0)
+            lookingLeft = true;
+            if (lastMoveDir >= 0)
             {
                 currentFrame = 0;
             }
@@ -54,18 +59,21 @@ public class PlayerController : MonoBehaviour
             if (sprite0 && currentFrame == animationFrameRate)
             {
                 sprite0 = false;
-                spriteRenderer.sprite = walkLeft1;
+                if(isCarrying) spriteRenderer.sprite = holdLeft1;
+                else spriteRenderer.sprite = walkLeft1;
                 currentFrame = 0;
             }
             else if(currentFrame == animationFrameRate)
             {
                 sprite0 = true;
-                spriteRenderer.sprite = walkLeft0;
+                if (isCarrying) spriteRenderer.sprite = holdLeft0;
+                else spriteRenderer.sprite = walkLeft0;
                 currentFrame = 0;
             }
         }
         else if (moveHorizontal > 0)
         {
+            lookingLeft = false;
             if (lastMoveDir <= 0)
             {
                 currentFrame = 0;
@@ -74,13 +82,15 @@ public class PlayerController : MonoBehaviour
             if (sprite0 && currentFrame == animationFrameRate)
             {
                 sprite0 = false;
-                spriteRenderer.sprite = walkRight1;
+                if (isCarrying) spriteRenderer.sprite = holdRight1;
+                else spriteRenderer.sprite = walkRight1;
                 currentFrame = 0;
             }
             else if(currentFrame == animationFrameRate)
             {
                 sprite0 = true;
-                spriteRenderer.sprite = walkRight0;
+                if (isCarrying) spriteRenderer.sprite = holdRight0;
+                else spriteRenderer.sprite = walkRight0;
                 currentFrame = 0;
             }
         }
@@ -88,7 +98,16 @@ public class PlayerController : MonoBehaviour
         {
             //standing still
             sprite0 = false;
-            spriteRenderer.sprite = stand;
+            if (isCarrying)
+            {
+                if (lookingLeft) spriteRenderer.sprite = standHoldLeft;
+                else spriteRenderer.sprite = standHoldRight;
+            }
+            else
+            {
+                if (lookingLeft) spriteRenderer.sprite = standLeft;
+                else spriteRenderer.sprite = standRight;
+            }
         }
         currentFrame++;
         lastMoveDir = moveHorizontal;

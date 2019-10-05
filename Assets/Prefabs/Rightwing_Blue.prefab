@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9072333248799547596}
   - component: {fileID: 9072333248799547602}
   - component: {fileID: 1729650357081681416}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rightwing_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}

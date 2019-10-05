@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 450174376108239273}
   - component: {fileID: 450174376108239287}
   - component: {fileID: 2584865077920079922}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Engine_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}

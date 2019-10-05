@@ -18,6 +18,8 @@ public class DestroyOnClick : MonoBehaviour
 
     private void OnMouseDown() //Works on touch device as well.
     {
+        BreakIntoPieces pieces = this.gameObject.GetComponent<BreakIntoPieces>();
+        if (pieces != null) pieces.SpawnParts();
         Destroy(this.gameObject);
     }
 }
