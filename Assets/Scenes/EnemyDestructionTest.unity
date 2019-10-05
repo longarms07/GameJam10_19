@@ -207,6 +207,11 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9073278670759453780, guid: bf8545a7c8800ee4fbdfea66df0c54d0,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf8545a7c8800ee4fbdfea66df0c54d0, type: 3}
 --- !u!4 &17321645 stripped
@@ -248,7 +253,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  flightSpeed: 20
+  flightSpeed: 15
+  rotateSpeed: 2
   hitPoints: 100
   isCarrying: 0
   walkLeft0: {fileID: -7433986902432109443, guid: 621242efd6e9ce643b54fa208580d0be,
@@ -299,7 +305,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &29560683
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -476,6 +482,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_GravityScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072333248799547602, guid: beacd3fc86883504cac7421c12ea3fc7,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: beacd3fc86883504cac7421c12ea3fc7, type: 3}
@@ -757,6 +768,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_GravityScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8696665738646894235, guid: 73f7a759a6b89cc43aa261ef4ddb43dd,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73f7a759a6b89cc43aa261ef4ddb43dd, type: 3}
@@ -5932,6 +5948,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_GravityScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8236833435585940758, guid: cbb6fe9e67a6ca04682f37530aed1f99,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbb6fe9e67a6ca04682f37530aed1f99, type: 3}
@@ -16025,6 +16046,11 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1610228830088652336, guid: c72f040a35d42544abae953264d37b4a,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2757062378293936613, guid: c72f040a35d42544abae953264d37b4a,
         type: 3}
       propertyPath: m_Offset.y
@@ -16158,6 +16184,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_GravityScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004882588670809743, guid: 02ec94549f4a42744aeb7602b5042a90,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004882588670809743, guid: 02ec94549f4a42744aeb7602b5042a90,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004882588670809743, guid: 02ec94549f4a42744aeb7602b5042a90,
+        type: 3}
+      propertyPath: m_Simulated
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02ec94549f4a42744aeb7602b5042a90, type: 3}

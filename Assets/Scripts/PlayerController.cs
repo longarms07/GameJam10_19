@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     // player attributes
     public float speed;
     public float flightSpeed;
+    public float rotateSpeed;
     public float hitPoints;
     public bool isCarrying;
 
@@ -61,10 +62,19 @@ public class PlayerController : MonoBehaviour
 
         if (onShip)
         {
-            float moveVertical = Input.GetAxis("Vertical");
-            Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+            
 
-            rb2d.AddForce(movement * flightSpeed);
+
+            float moveVertical = Input.GetAxis("Vertical");
+            Vector2 face = new Vector2(moveHorizontal, moveVertical);
+            float angle = Mathf.Atan2(face.x, face.y) * Mathf.Rad2Deg * -1;
+            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotateSpeed * Time.deltaTime);
+
+            Vector2 target = new Vector2(this.gameObject.transform.localPosition.x+moveHorizontal, this.gameObject.transform.localPosition.y + moveVertical);
+            Vector3 moveTowards = Vector3.MoveTowards(this.gameObject.transform.localPosition, target, flightSpeed * Time.fixedDeltaTime);
+
+            rb2d.MovePosition(moveTowards);
 
         }
         else
