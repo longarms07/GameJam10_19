@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    // player attributes
     public float speed;
+    public float hitPoints;
+    public bool isCarrying;
 
     private Rigidbody2D rb2d;
 
