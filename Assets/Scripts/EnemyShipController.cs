@@ -26,7 +26,7 @@ public class EnemyShipController : MonoBehaviour
         Vector2 face = moveTowards - new Vector2(transform.position.x, transform.position.y);
         double y = moveTowards.y - transform.position.y;
 
-        float angle = Mathf.Atan2(face.x, face.y) * Mathf.Rad2Deg;
+        float angle = Mathf.Atan2(face.x, face.y) * Mathf.Rad2Deg * -1;
 
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
