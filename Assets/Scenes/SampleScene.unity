@@ -366,9 +366,9 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0.03, y: 0, z: 0.03, w: 0}
+    border: {x: 0.03, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.31, y: 0.62}
+    oldSize: {x: 0.27, y: 0.62}
     newSize: {x: 0.31, y: 0.62}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -415,8 +415,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -615648507924112612, guid: 621242efd6e9ce643b54fa208580d0be,
-    type: 3}
+  m_Sprite: {fileID: -76918555449751456, guid: 2020e41aa4e564049a08ae6c7120be1e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -455,8 +454,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+
   hitPoints: 100
   isCarrying: 0
+  walkLeft0: {fileID: -7433986902432109443, guid: 621242efd6e9ce643b54fa208580d0be,
+    type: 3}
+  walkLeft1: {fileID: -6330545707224407004, guid: 621242efd6e9ce643b54fa208580d0be,
+    type: 3}
+  walkRight0: {fileID: -615648507924112612, guid: 621242efd6e9ce643b54fa208580d0be,
+    type: 3}
+  walkRight1: {fileID: -5864996156430761645, guid: 621242efd6e9ce643b54fa208580d0be,
+    type: 3}
+  holdLeft0: {fileID: 1742226594677884910, guid: 621242efd6e9ce643b54fa208580d0be,
+    type: 3}
+  holdLeft1: {fileID: -6016028860744057248, guid: 621242efd6e9ce643b54fa208580d0be,
+    type: 3}
+  holdRight0: {fileID: -3633465043291989019, guid: 621242efd6e9ce643b54fa208580d0be,
+    type: 3}
+  holdRight1: {fileID: 3538518235138522674, guid: 621242efd6e9ce643b54fa208580d0be,
+    type: 3}
+  stand: {fileID: -76918555449751456, guid: 2020e41aa4e564049a08ae6c7120be1e, type: 3}
+  animationFrameRate: 5
 --- !u!1 &1714861570
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,3 +578,5 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+
+
