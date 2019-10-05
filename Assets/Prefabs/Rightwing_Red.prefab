@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7689971039822596181}
   - component: {fileID: 7689971039822596171}
   - component: {fileID: 1107840680894940817}
+  - component: {fileID: 3371348153115339605}
   m_Layer: 8
   m_Name: Rightwing_Red
   m_TagString: Untagged
@@ -138,3 +139,18 @@ PolygonCollider2D:
       - {x: 0.26, y: -0.29}
       - {x: 0.26999998, y: -0.28}
       - {x: 0.26999998, y: -0.17999999}
+--- !u!114 &3371348153115339605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7689971039822596170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cf60f7c737772841a459bea9d87668d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: -779247735450176155, guid: 01121e783605bb4419da3f17366596d6, type: 3}
+  shieldAnims: []
+  kind: 4

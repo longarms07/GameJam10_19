@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1610228830088652333}
   - component: {fileID: 1610228830088652334}
+  - component: {fileID: 2741029664286237580}
   - component: {fileID: 1610228830088652336}
   - component: {fileID: 2757062378293936613}
   - component: {fileID: 4030919556822949319}
@@ -84,6 +85,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2741029664286237580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610228830088652337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cf60f7c737772841a459bea9d87668d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: -7604838462600041511, guid: e81fc83863ad3784085a9f81375009a1, type: 3}
+  shieldAnims:
+  - {fileID: -2326387718176073400, guid: e81fc83863ad3784085a9f81375009a1, type: 3}
+  - {fileID: -7640969164507117352, guid: e81fc83863ad3784085a9f81375009a1, type: 3}
+  - {fileID: 7640822524586941387, guid: e81fc83863ad3784085a9f81375009a1, type: 3}
+  kind: 5
 --- !u!50 &1610228830088652336
 Rigidbody2D:
   serializedVersion: 4
@@ -118,9 +137,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0069425553, y: 0.046283916}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.108485356
 --- !u!114 &4030919556822949319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb60b4dbef00a4a4587651307951109d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frameRate: 4
+  frameRate: 6
   s0: {fileID: -7604838462600041511, guid: e81fc83863ad3784085a9f81375009a1, type: 3}
   s1: {fileID: -2326387718176073400, guid: e81fc83863ad3784085a9f81375009a1, type: 3}
   s2: {fileID: -7640969164507117352, guid: e81fc83863ad3784085a9f81375009a1, type: 3}

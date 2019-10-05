@@ -27,11 +27,13 @@ public class PlayerController : MonoBehaviour
     public float raycastDistance;
     public float partOffset;
 
+    public GameObject playerShip;
+
     private int currentFrame;
     private float lastMoveDir;
     private bool lookingLeft = true;
     private GameObject heldPart = null;
-
+    private PlayerShip ship;
     private SpriteRenderer spriteRenderer;
     private bool sprite0;
 
@@ -44,6 +46,7 @@ public class PlayerController : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        ship = playerShip.GetComponent<PlayerShip>();
 
         GameManager.getInstance().player = this.gameObject;
     }
@@ -123,11 +126,13 @@ public class PlayerController : MonoBehaviour
         {
             if (lookingLeft) heldPart.transform.localPosition = this.gameObject.transform.localPosition + new Vector3(0, partOffset, 1);
             else heldPart.transform.localPosition = this.gameObject.transform.localPosition + new Vector3(0, partOffset, 1);
+            CheckForShip();
         }
         if (Input.GetKeyDown(GameManager.getInstance().interactionKey))
         {
-            if(!isCarrying)
+            if (!isCarrying)
                 CheckForPart();
+            else PutDownPart();
         }
     }
 
@@ -144,6 +149,30 @@ public class PlayerController : MonoBehaviour
             heldPart = hit.collider.gameObject;
             heldPart.GetComponent<Rigidbody2D>().gravityScale = 0;
         }
+    }
+
+    public void CheckForShip()
+    {
+        RaycastHit2D hit;
+        if (lookingLeft) hit = Physics2D.CircleCast(this.gameObject.transform.localPosition, this.gameObject.transform.localScale.y / 2, Vector3.left, 0, LayerMask.GetMask("PlayerShip"));
+        else hit = Physics2D.CircleCast(this.gameObject.transform.localPosition, this.gameObject.transform.localScale.y / 2, Vector3.right, 0, LayerMask.GetMask("PlayerShip"));
+
+        if (hit.collider != null)
+        {
+            if (ship.AddPart(heldPart))
+            {
+                Destroy(heldPart);
+                isCarrying = false;
+            }
+            else PutDownPart();
+        }
+    }
+
+    public void PutDownPart()
+    {
+        isCarrying = false;
+        heldPart.GetComponent<Rigidbody2D>().gravityScale = 1;
+        heldPart = null;
     }
 
 }
