@@ -11,12 +11,13 @@ public class BreakIntoPieces : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
 
     public void SpawnParts()
     {
+        
+
         if(shipPieces.Count > 0)
         {
             Random rnd = new Random();
