@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager g;
 
+    public GameObject player;
+
     private GameManager() {
 
     }

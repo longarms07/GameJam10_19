@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        GameManager.getInstance().player = this.gameObject;
     }
 
     // FixedUpdate is called at regular intervals
