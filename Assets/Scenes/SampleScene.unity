@@ -472,8 +472,17 @@ MonoBehaviour:
     type: 3}
   holdRight1: {fileID: 3538518235138522674, guid: 621242efd6e9ce643b54fa208580d0be,
     type: 3}
-  stand: {fileID: -76918555449751456, guid: 2020e41aa4e564049a08ae6c7120be1e, type: 3}
+  standRight: {fileID: -76918555449751456, guid: 2020e41aa4e564049a08ae6c7120be1e,
+    type: 3}
+  standLeft: {fileID: 882721784175259440, guid: 9ae76d60aed55d14ba323df0a57bf494,
+    type: 3}
+  standHoldLeft: {fileID: -742747773598314067, guid: 9235eff75c949bf4bb7474083d739982,
+    type: 3}
+  standHoldRight: {fileID: 3313605336928363617, guid: e1d1f4dbeb92fe9468a601c4a1b778b1,
+    type: 3}
   animationFrameRate: 5
+  raycastDistance: 3
+  partOffset: 1
 --- !u!1 &1714861570
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,8 +600,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc73eb93b5d304ea28bbc21d6ba49e15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  rotateSpeed: 1
+  speed: 4
+  rotateSpeed: 3
+  retreatThreshold: 5
+  retreatUntil: 20
 --- !u!61 &1714861575
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -648,6 +659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5489308ac863b43909deedbd125afe51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionKey: e
   player: {fileID: 0}
 --- !u!4 &1821164498
 Transform:
