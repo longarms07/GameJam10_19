@@ -13,6 +13,7 @@ public class PlayerShip : MonoBehaviour
     public GameObject rGun;
 
     private Dictionary<ShipPartEnum, bool> partAttached;
+    private SpriteRenderer skeletonRenderer;
     private SpriteRenderer shieldRenderer;
     private SpriteRenderer engineRenderer;
     private SpriteRenderer lWingRenderer;
@@ -20,12 +21,18 @@ public class PlayerShip : MonoBehaviour
     private SpriteRenderer lGunRenderer;
     private SpriteRenderer rGunRenderer;
     private ShieldAnimator shieldAnim;
+    private bool inFlight;
+    private Vector3 startPosition;
+    private Quaternion startRotation;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        startPosition = this.gameObject.transform.localPosition;
+        startRotation = this.gameObject.transform.localRotation;
+
         shieldRenderer = shield.GetComponent<SpriteRenderer>();
         engineRenderer = engine.GetComponent<SpriteRenderer>();
         lWingRenderer = lWing.GetComponent<SpriteRenderer>();
@@ -33,6 +40,7 @@ public class PlayerShip : MonoBehaviour
         lGunRenderer = lGun.GetComponent<SpriteRenderer>();
         rGunRenderer = rGun.GetComponent<SpriteRenderer>();
         shieldAnim = shield.GetComponent<ShieldAnimator>();
+        skeletonRenderer = GetComponent<SpriteRenderer>();
         partAttached = new Dictionary<ShipPartEnum, bool>();
         partAttached[ShipPartEnum.LGun] = false;
         partAttached[ShipPartEnum.LWing] = false;
@@ -45,13 +53,17 @@ public class PlayerShip : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (inFlight)
+        {
+            this.transform.localPosition = GameManager.getInstance().player.transform.localPosition;
+            this.transform.localRotation = GameManager.getInstance().player.transform.localRotation;
+        }
     }
 
     public bool AddPart(GameObject part)
     {
         ShipPart shipPart = part.GetComponent<ShipPart>();
-        Debug.Log(shipPart.kind);
+        //Debug.Log(shipPart.kind);
         if (shipPart == null) return false;
         if (partAttached[shipPart.kind])
         {
@@ -122,6 +134,17 @@ public class PlayerShip : MonoBehaviour
     public bool HasShield()
     {
         if (partAttached[ShipPartEnum.Shield]) return true;
+        return false;
+    }
+
+    public bool BoardShip()
+    {
+        if (CanFly())
+        {
+            inFlight = true;
+            skeletonRenderer.enabled = false;
+            return true;
+        }
         return false;
     }
 

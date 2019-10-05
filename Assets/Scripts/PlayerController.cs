@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
     private PlayerShip ship;
     private SpriteRenderer spriteRenderer;
     private bool sprite0;
+    private bool onShip;
+    private Rigidbody2D rigid;
 
 
 
@@ -47,92 +49,112 @@ public class PlayerController : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         if(playerShip!=null) ship = playerShip.GetComponent<PlayerShip>();
-
+        rigid = this.GetComponent<Rigidbody2D>();
         GameManager.getInstance().player = this.gameObject;
     }
 
     // FixedUpdate is called at regular intervals
     void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-
-        if(moveHorizontal < 0)
+        if (onShip)
         {
-            lookingLeft = true;
-            if (lastMoveDir >= 0)
-            {
-                currentFrame = 0;
-            }
-            //leftSprite
-            if (sprite0 && currentFrame == animationFrameRate)
-            {
-                sprite0 = false;
-                if(isCarrying) spriteRenderer.sprite = holdLeft1;
-                else spriteRenderer.sprite = walkLeft1;
-                currentFrame = 0;
-            }
-            else if(currentFrame == animationFrameRate)
-            {
-                sprite0 = true;
-                if (isCarrying) spriteRenderer.sprite = holdLeft0;
-                else spriteRenderer.sprite = walkLeft0;
-                currentFrame = 0;
-            }
-        }
-        else if (moveHorizontal > 0)
-        {
-            lookingLeft = false;
-            if (lastMoveDir <= 0)
-            {
-                currentFrame = 0;
-            }
-            //rightSprite
-            if (sprite0 && currentFrame == animationFrameRate)
-            {
-                sprite0 = false;
-                if (isCarrying) spriteRenderer.sprite = holdRight1;
-                else spriteRenderer.sprite = walkRight1;
-                currentFrame = 0;
-            }
-            else if(currentFrame == animationFrameRate)
-            {
-                sprite0 = true;
-                if (isCarrying) spriteRenderer.sprite = holdRight0;
-                else spriteRenderer.sprite = walkRight0;
-                currentFrame = 0;
-            }
+            
         }
         else
         {
-            //standing still
-            sprite0 = false;
-            if (isCarrying)
+            float moveHorizontal = Input.GetAxis("Horizontal");
+
+            if (moveHorizontal < 0)
             {
-                if (lookingLeft) spriteRenderer.sprite = standHoldLeft;
-                else spriteRenderer.sprite = standHoldRight;
+                lookingLeft = true;
+                if (lastMoveDir >= 0)
+                {
+                    currentFrame = 0;
+                }
+                //leftSprite
+                if (sprite0 && currentFrame == animationFrameRate)
+                {
+                    sprite0 = false;
+                    if (isCarrying) spriteRenderer.sprite = holdLeft1;
+                    else spriteRenderer.sprite = walkLeft1;
+                    currentFrame = 0;
+                }
+                else if (currentFrame == animationFrameRate)
+                {
+                    sprite0 = true;
+                    if (isCarrying) spriteRenderer.sprite = holdLeft0;
+                    else spriteRenderer.sprite = walkLeft0;
+                    currentFrame = 0;
+                }
+            }
+            else if (moveHorizontal > 0)
+            {
+                lookingLeft = false;
+                if (lastMoveDir <= 0)
+                {
+                    currentFrame = 0;
+                }
+                //rightSprite
+                if (sprite0 && currentFrame == animationFrameRate)
+                {
+                    sprite0 = false;
+                    if (isCarrying) spriteRenderer.sprite = holdRight1;
+                    else spriteRenderer.sprite = walkRight1;
+                    currentFrame = 0;
+                }
+                else if (currentFrame == animationFrameRate)
+                {
+                    sprite0 = true;
+                    if (isCarrying) spriteRenderer.sprite = holdRight0;
+                    else spriteRenderer.sprite = walkRight0;
+                    currentFrame = 0;
+                }
             }
             else
             {
-                if (lookingLeft) spriteRenderer.sprite = standLeft;
-                else spriteRenderer.sprite = standRight;
+                //standing still
+                sprite0 = false;
+                if (isCarrying)
+                {
+                    if (lookingLeft) spriteRenderer.sprite = standHoldLeft;
+                    else spriteRenderer.sprite = standHoldRight;
+                }
+                else
+                {
+                    if (lookingLeft) spriteRenderer.sprite = standLeft;
+                    else spriteRenderer.sprite = standRight;
+                }
             }
-        }
-        currentFrame++;
-        lastMoveDir = moveHorizontal;
-        Vector2 movement = new Vector2(moveHorizontal, 0);
+            currentFrame++;
+            lastMoveDir = moveHorizontal;
+            Vector2 movement = new Vector2(moveHorizontal, 0);
 
-        rb2d.AddForce(movement * speed);
-        if (isCarrying && heldPart != null)
-        {
-            if (lookingLeft) heldPart.transform.localPosition = this.gameObject.transform.localPosition + new Vector3(0, partOffset, 1);
-            else heldPart.transform.localPosition = this.gameObject.transform.localPosition + new Vector3(0, partOffset, 1);
-            CheckForShip();
-        }
-        if (Input.GetKeyDown(GameManager.getInstance().interactionKey))
-        {
-            if (!isCarrying)
-                CheckForPart();
-            else PutDownPart();
+            rb2d.AddForce(movement * speed);
+            if (isCarrying && heldPart != null)
+            {
+                if (lookingLeft) heldPart.transform.localPosition = this.gameObject.transform.localPosition + new Vector3(0, partOffset, 1);
+                else heldPart.transform.localPosition = this.gameObject.transform.localPosition + new Vector3(0, partOffset, 1);
+                CheckForShip();
+            }
+            if (Input.GetKeyDown(GameManager.getInstance().interactionKey))
+            {
+                if (!isCarrying)
+                    CheckForPart();
+                else PutDownPart();
+            }
+            else if (Input.GetKeyDown(GameManager.getInstance().boardShipKey))
+            {
+                RaycastHit2D hit = SearchForShip();
+                if (hit.collider != null)
+                {
+                    if (ship.BoardShip())
+                    {
+                        rigid.gravityScale = 0;
+                        this.gameObject.transform.localPosition = playerShip.transform.localPosition;
+                        onShip = true;
+                    }
+                }
+            }
         }
     }
 
@@ -155,9 +177,8 @@ public class PlayerController : MonoBehaviour
     {
         if (playerShip != null)
         {
-            RaycastHit2D hit;
-            if (lookingLeft) hit = Physics2D.CircleCast(this.gameObject.transform.localPosition, this.gameObject.transform.localScale.y / 2, Vector3.left, 0, LayerMask.GetMask("PlayerShip"));
-            else hit = Physics2D.CircleCast(this.gameObject.transform.localPosition, this.gameObject.transform.localScale.y / 2, Vector3.right, 0, LayerMask.GetMask("PlayerShip"));
+            RaycastHit2D hit = SearchForShip();
+           
 
             if (hit.collider != null)
             {
@@ -169,6 +190,12 @@ public class PlayerController : MonoBehaviour
                 else PutDownPart();
             }
         }
+    }
+
+    public RaycastHit2D SearchForShip()
+    {
+        if (lookingLeft) return Physics2D.CircleCast(this.gameObject.transform.localPosition, this.gameObject.transform.localScale.y / 2, Vector3.left, 0, LayerMask.GetMask("PlayerShip"));
+        else return Physics2D.CircleCast(this.gameObject.transform.localPosition, this.gameObject.transform.localScale.y / 2, Vector3.right, 0, LayerMask.GetMask("PlayerShip"));
     }
 
     public void PutDownPart()
