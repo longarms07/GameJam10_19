@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     // player attributes
     public float speed;
+    public float flightSpeed;
     public float hitPoints;
     public bool isCarrying;
 
@@ -56,13 +57,19 @@ public class PlayerController : MonoBehaviour
     // FixedUpdate is called at regular intervals
     void FixedUpdate()
     {
+        float moveHorizontal = Input.GetAxis("Horizontal");
+
         if (onShip)
         {
-            
+            float moveVertical = Input.GetAxis("Vertical");
+            Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+
+            rb2d.AddForce(movement * flightSpeed);
+
         }
         else
         {
-            float moveHorizontal = Input.GetAxis("Horizontal");
+            
 
             if (moveHorizontal < 0)
             {

@@ -248,6 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  flightSpeed: 20
   hitPoints: 100
   isCarrying: 0
   walkLeft0: {fileID: -7433986902432109443, guid: 621242efd6e9ce643b54fa208580d0be,
