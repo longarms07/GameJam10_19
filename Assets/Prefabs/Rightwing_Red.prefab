@@ -154,3 +154,4 @@ MonoBehaviour:
   sprite: {fileID: -779247735450176155, guid: 01121e783605bb4419da3f17366596d6, type: 3}
   shieldAnims: []
   kind: 4
+  durability: 2

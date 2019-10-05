@@ -53,6 +53,7 @@ MonoBehaviour:
   - {fileID: 1691966074973790518, guid: e81fc83863ad3784085a9f81375009a1, type: 3}
   - {fileID: -4135836072091612975, guid: e81fc83863ad3784085a9f81375009a1, type: 3}
   kind: 5
+  durability: 10
 --- !u!212 &6190305559219688749
 SpriteRenderer:
   m_ObjectHideFlags: 0

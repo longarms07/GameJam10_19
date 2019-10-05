@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public string interactionKey;
     public string boardShipKey;
     public GameObject player;
+    public GameObject playerShip;
 
     private GameManager() {
 

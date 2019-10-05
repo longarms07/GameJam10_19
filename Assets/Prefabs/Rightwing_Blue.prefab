@@ -99,6 +99,7 @@ MonoBehaviour:
   sprite: {fileID: -5731406482579983623, guid: 01121e783605bb4419da3f17366596d6, type: 3}
   shieldAnims: []
   kind: 4
+  durability: 5
 --- !u!50 &9072333248799547602
 Rigidbody2D:
   serializedVersion: 4

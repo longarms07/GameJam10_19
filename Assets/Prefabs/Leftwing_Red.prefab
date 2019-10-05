@@ -49,6 +49,7 @@ MonoBehaviour:
   sprite: {fileID: -2050506693779253758, guid: 2dc0a9b8da9c93547aea454f0651abbd, type: 3}
   shieldAnims: []
   kind: 3
+  durability: 2
 --- !u!212 &6264296107064903066
 SpriteRenderer:
   m_ObjectHideFlags: 0

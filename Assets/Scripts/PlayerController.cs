@@ -201,7 +201,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (ship.AddPart(heldPart))
                 {
-                    Destroy(heldPart);
+                    
                     isCarrying = false;
                 }
                 else PutDownPart();
@@ -222,4 +222,9 @@ public class PlayerController : MonoBehaviour
         heldPart = null;
     }
 
+    public void Eject()
+    {
+        onShip = false;
+        rigid.gravityScale = 1;
+    }
 }

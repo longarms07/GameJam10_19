@@ -103,6 +103,7 @@ MonoBehaviour:
   - {fileID: -7640969164507117352, guid: e81fc83863ad3784085a9f81375009a1, type: 3}
   - {fileID: 7640822524586941387, guid: e81fc83863ad3784085a9f81375009a1, type: 3}
   kind: 5
+  durability: 20
 --- !u!50 &1610228830088652336
 Rigidbody2D:
   serializedVersion: 4

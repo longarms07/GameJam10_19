@@ -7,5 +7,6 @@ public class ShipPart : MonoBehaviour
 
     public Sprite sprite;
     public Sprite[] shieldAnims;
-    public ShipPartEnum kind; 
+    public ShipPartEnum kind;
+    public int durability;
 }

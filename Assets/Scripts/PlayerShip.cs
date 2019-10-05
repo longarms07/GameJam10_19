@@ -11,6 +11,7 @@ public class PlayerShip : MonoBehaviour
     public GameObject rWing;
     public GameObject lGun;
     public GameObject rGun;
+    public int durability;
 
     private Dictionary<ShipPartEnum, bool> partAttached;
     private SpriteRenderer skeletonRenderer;
@@ -24,15 +25,17 @@ public class PlayerShip : MonoBehaviour
     private bool inFlight;
     private Vector3 startPosition;
     private Quaternion startRotation;
+    private ParticleSystem explosion;
+    public List<GameObject> shipPieces = new List<GameObject>();
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        startPosition = this.gameObject.transform.localPosition;
-        startRotation = this.gameObject.transform.localRotation;
-
+        startPosition = this.gameObject.transform.position;
+        startRotation = this.gameObject.transform.rotation;
+        explosion = GetComponent<ParticleSystem>();
         shieldRenderer = shield.GetComponent<SpriteRenderer>();
         engineRenderer = engine.GetComponent<SpriteRenderer>();
         lWingRenderer = lWing.GetComponent<SpriteRenderer>();
@@ -112,7 +115,9 @@ public class PlayerShip : MonoBehaviour
                 shieldRenderer.sprite = shipPart.sprite;
                 break;
         }
-
+        shipPieces.Add(part);
+        durability += shipPart.durability;
+        part.SetActive(false);
         return true;
 
     }
@@ -148,6 +153,78 @@ public class PlayerShip : MonoBehaviour
         return false;
     }
 
+    public void Kersplode()
+    {
+        Debug.Log("Kersplode!");
+        if (explosion != null)
+        {
+            explosion.Play();
+            GameManager.getInstance().player.GetComponent<PlayerController>().Eject();
+            GameManager.getInstance().player.transform.rotation = startRotation;
+            inFlight = false;
+            SpawnParts();
+            this.transform.position = startPosition;
+            this.transform.rotation = startRotation;
+            skeletonRenderer.enabled = true;
+            partAttached[ShipPartEnum.LGun] = false;
+            partAttached[ShipPartEnum.LWing] = false;
+            partAttached[ShipPartEnum.RGun] = false;
+            partAttached[ShipPartEnum.RWing] = false;
+            partAttached[ShipPartEnum.Shield] = false;
+            partAttached[ShipPartEnum.Engine] = false;
+            lGunRenderer.sprite = null;
+            rGunRenderer.sprite = null;
+            lWingRenderer.sprite = null;
+            rWingRenderer.sprite = null;
+            engineRenderer.sprite = null;
+            shieldAnim.s0 = null;
+            shieldAnim.s1 = null;
+            shieldAnim.s2 = null;
+            shieldAnim.s3 = null;
+            shieldRenderer.sprite = null;
+        }
+    }
+
+    public void SpawnParts()
+    {
+
+
+        if (shipPieces.Count > 0)
+        {
+            Random rnd = new Random();
+
+            int part1 = Random.Range(0, shipPieces.Count);
+            int part2 = part1;
+            if (shipPieces.Count > 1)
+            {
+                part2 = Random.Range(0, shipPieces.Count);
+                while (part2 == part1)
+                {
+                    part2 = Random.Range(0, shipPieces.Count);
+                }
+                shipPieces[part2].SetActive(true);
+                shipPieces[part2].transform.localPosition = this.transform.localPosition;
+                shipPieces[part2].GetComponent<Rigidbody2D>().gravityScale = 1;
+            }
+            shipPieces[part1].SetActive(true);
+            shipPieces[part1].transform.localPosition = this.transform.localPosition;
+            shipPieces[part1].GetComponent<Rigidbody2D>().gravityScale = 1;
+
+
+            for (int i = 0; i < shipPieces.Count; i++)
+            {
+                if (i != part1 && i != part2)
+                {
+                    Destroy(shipPieces[i]);
+                }
+                else
+                {
+                    shipPieces[i] = null;
+                }
+            }
+        }
+        
+    }
 
 
 }
