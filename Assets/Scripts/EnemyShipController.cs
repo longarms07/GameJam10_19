@@ -29,14 +29,6 @@ public class EnemyShipController : MonoBehaviour
 
         Vector2 moveTowards = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
 
-        if (retreat)
-        {
-            moveTowards += 0.01f * Vector2.Perpendicular(moveTowards);
-        }
-        else {
-            moveTowards -= 0.01f * Vector2.Perpendicular(moveTowards);
-        }
-
         //moves away from the player when it gets too close
         if (Vector2.Distance(transform.position, target) < retreatThreshold) {
             retreat = true;
@@ -46,19 +38,17 @@ public class EnemyShipController : MonoBehaviour
             retreat = false;
         }
 
+        
         if (retreat) {
             moveTowards = Vector2.MoveTowards(transform.position, target, -1 * speed * Time.deltaTime);
         }
-
-
-        rb2d.MovePosition(moveTowards);
+        
 
 
         /*
             face the move direction
          */
         Vector2 face = moveTowards - new Vector2(transform.position.x, transform.position.y);
-        double y = moveTowards.y - transform.position.y;
 
         //get the angle and rotate 
         float angle = Mathf.Atan2(face.x, face.y) * Mathf.Rad2Deg * -1;
@@ -69,10 +59,22 @@ public class EnemyShipController : MonoBehaviour
         if (retreat)
         {
             Quaternion.Inverse(rotation);
+            angle += 180 % 360;
+            angle += 0.00f;
+        }
+        else {
+            angle -= 0.00f;
         }
 
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotateSpeed * Time.deltaTime);
 
+
+        Vector2 newPos = new Vector2(transform.position.x, transform.position.y) + new Vector2(speed * Mathf.Cos(angle * Mathf.Deg2Rad), speed * Mathf.Sin(angle * Mathf.Deg2Rad));
+
+        moveTowards = Vector2.MoveTowards(transform.position, newPos, speed * Time.deltaTime);
+        if (retreat) { moveTowards = Vector2.MoveTowards(transform.position, newPos, -1 * speed * Time.deltaTime); }
+
+        rb2d.MovePosition(moveTowards);
     }
 
 }
