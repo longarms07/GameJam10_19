@@ -29,6 +29,14 @@ public class EnemyShipController : MonoBehaviour
 
         Vector2 moveTowards = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
 
+        if (retreat)
+        {
+            moveTowards += 0.01f * Vector2.Perpendicular(moveTowards);
+        }
+        else {
+            moveTowards -= 0.01f * Vector2.Perpendicular(moveTowards);
+        }
+
         //moves away from the player when it gets too close
         if (Vector2.Distance(transform.position, target) < retreatThreshold) {
             retreat = true;
