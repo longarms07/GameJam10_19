@@ -57,7 +57,7 @@ public class EnemyShipController : MonoBehaviour
 
         //turn around when nessecary 
         if (retreat) {
-            angle *= -1;
+            angle -= 90;
         }
 
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);

@@ -603,7 +603,7 @@ MonoBehaviour:
   speed: 4
   rotateSpeed: 3
   retreatThreshold: 5
-  retreatUntil: 20
+  retreatUntil: 10
 --- !u!61 &1714861575
 BoxCollider2D:
   m_ObjectHideFlags: 0
