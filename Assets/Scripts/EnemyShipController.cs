@@ -55,12 +55,13 @@ public class EnemyShipController : MonoBehaviour
         //get the angle and rotate 
         float angle = Mathf.Atan2(face.x, face.y) * Mathf.Rad2Deg * -1;
 
-        //turn around when nessecary 
-        if (retreat) {
-            angle -= 90;
-        }
-
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        //turn around when nessecary 
+        if (retreat)
+        {
+            Quaternion.Inverse(rotation);
+        }
 
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotateSpeed * Time.deltaTime);
 
