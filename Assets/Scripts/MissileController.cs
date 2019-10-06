@@ -33,10 +33,10 @@ public class MissileController : MonoBehaviour
             collisionBox.enabled = false;
             Kersplode();
 
-            //player damage
-            PlayerController player = GameManager.getInstance().player.GetComponent<PlayerController>();
-            if (collision.gameObject.layer == 9 && player != null) {
-                player.hitPoints -= damage;
+            //damage 
+            Damageable hp = GameManager.getInstance().player.GetComponent<Damageable>();
+            if (hp != null) {
+                hp.hitpoints -= damage;
             }
         }
     }

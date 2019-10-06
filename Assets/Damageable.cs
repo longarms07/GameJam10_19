@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Damageable : MonoBehaviour
 {
-    int hitpoints;
+    public int hitpoints;
 }
