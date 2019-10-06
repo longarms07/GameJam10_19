@@ -245,6 +245,7 @@ GameObject:
   m_Component:
   - component: {fileID: 29560685}
   - component: {fileID: 29560684}
+  - component: {fileID: 29560686}
   - component: {fileID: 29560683}
   - component: {fileID: 29560682}
   - component: {fileID: 29560681}
@@ -410,6 +411,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &29560686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29560680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edf177faca6574518b2d4d5edbf19767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitpoints: 100
 --- !u!1001 &89901631
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1194,6 +1208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 896924847}
   - component: {fileID: 896924846}
+  - component: {fileID: 896924842}
   - component: {fileID: 896924845}
   - component: {fileID: 896924844}
   - component: {fileID: 896924843}
@@ -1226,7 +1241,19 @@ MonoBehaviour:
   - {fileID: 6264296107064903045, guid: 14bf5920517280e40b79d6b997348a08, type: 3}
   - {fileID: 7689971039822596170, guid: c5743599c7ce2b844b49bfe5256e3605, type: 3}
   - {fileID: 6190305559219688754, guid: 6d046d0bc54d82646b8ee0cd38f65df3, type: 3}
-  durability: 10
+--- !u!114 &896924842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896924840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edf177faca6574518b2d4d5edbf19767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitpoints: 10
 --- !u!61 &896924843
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6259,6 +6286,7 @@ GameObject:
   m_Component:
   - component: {fileID: 942827292}
   - component: {fileID: 942827291}
+  - component: {fileID: 942827287}
   - component: {fileID: 942827290}
   - component: {fileID: 942827289}
   - component: {fileID: 942827288}
@@ -6291,7 +6319,19 @@ MonoBehaviour:
   - {fileID: 9073278670759453781, guid: bf8545a7c8800ee4fbdfea66df0c54d0, type: 3}
   - {fileID: 9072333248799547603, guid: beacd3fc86883504cac7421c12ea3fc7, type: 3}
   - {fileID: 1610228830088652337, guid: c72f040a35d42544abae953264d37b4a, type: 3}
-  durability: 10
+--- !u!114 &942827287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942827285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edf177faca6574518b2d4d5edbf19767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitpoints: 10
 --- !u!61 &942827288
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11215,6 +11255,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1053221976}
   - component: {fileID: 1053221975}
+  - component: {fileID: 1053221971}
   - component: {fileID: 1053221974}
   - component: {fileID: 1053221973}
   - component: {fileID: 1053221972}
@@ -11247,7 +11288,19 @@ MonoBehaviour:
   - {fileID: 6264296107064903045, guid: 14bf5920517280e40b79d6b997348a08, type: 3}
   - {fileID: 7689971039822596170, guid: c5743599c7ce2b844b49bfe5256e3605, type: 3}
   - {fileID: 6190305559219688754, guid: 6d046d0bc54d82646b8ee0cd38f65df3, type: 3}
-  durability: 10
+--- !u!114 &1053221971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053221969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edf177faca6574518b2d4d5edbf19767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitpoints: 10
 --- !u!61 &1053221972
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16920,6 +16973,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1898274701}
   - component: {fileID: 1898274700}
+  - component: {fileID: 1898274703}
   - component: {fileID: 1898274699}
   - component: {fileID: 1898274698}
   - component: {fileID: 1898274697}
@@ -17080,7 +17134,19 @@ MonoBehaviour:
   - {fileID: 6264296107064903045, guid: 14bf5920517280e40b79d6b997348a08, type: 3}
   - {fileID: 7689971039822596170, guid: c5743599c7ce2b844b49bfe5256e3605, type: 3}
   - {fileID: 6190305559219688754, guid: 6d046d0bc54d82646b8ee0cd38f65df3, type: 3}
-  durability: 10
+--- !u!114 &1898274703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898274696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edf177faca6574518b2d4d5edbf19767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitpoints: 10
 --- !u!199 &1898274704
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -21989,6 +22055,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2103422111}
   - component: {fileID: 2103422110}
+  - component: {fileID: 2103422116}
   - component: {fileID: 2103422112}
   - component: {fileID: 2103422114}
   - component: {fileID: 2103422113}
@@ -22087,8 +22154,8 @@ MonoBehaviour:
   rWing: {fileID: 548641566}
   lGun: {fileID: 726523315}
   rGun: {fileID: 808154687}
-  durability: 0
   explodeTime: 5
+  damage: {fileID: 0}
   shipPieces: []
 --- !u!198 &2103422113
 ParticleSystem:
@@ -26965,6 +27032,19 @@ PolygonCollider2D:
       - {x: -0.03, y: 0.12}
       - {x: -0.06, y: 0.099999994}
       - {x: -0.049999997, y: 0.099999994}
+--- !u!114 &2103422116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103422109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edf177faca6574518b2d4d5edbf19767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitpoints: 0
 --- !u!1001 &1350008436511079949
 PrefabInstance:
   m_ObjectHideFlags: 0

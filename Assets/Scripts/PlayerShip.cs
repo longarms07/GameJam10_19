@@ -11,8 +11,8 @@ public class PlayerShip : MonoBehaviour
     public GameObject rWing;
     public GameObject lGun;
     public GameObject rGun;
-    public int durability;
     public float explodeTime;
+    public Damageable damage;
 
     private Dictionary<ShipPartEnum, bool> partAttached;
     private SpriteRenderer skeletonRenderer;
@@ -32,16 +32,11 @@ public class PlayerShip : MonoBehaviour
     private float startTime;
 
 
-
-    private void Awake()
-    {
-
-        durability = 0;
-    }
-
     // Start is called before the first frame update
     void Start()
     {
+        damage = GetComponent<Damageable>();
+        damage.hitpoints = 0;
         shipPieces = new List<GameObject>();
         startPosition = this.gameObject.transform.position;
         startRotation = this.gameObject.transform.rotation;
@@ -72,7 +67,7 @@ public class PlayerShip : MonoBehaviour
             if (!canExplode && startTime >= explodeTime) canExplode = true;
             this.transform.localPosition = GameManager.getInstance().player.transform.localPosition;
             this.transform.localRotation = GameManager.getInstance().player.transform.localRotation;
-            if (partAttached[ShipPartEnum.Shield] && durability < 10) shieldAnim.SetActive(false);
+            if (partAttached[ShipPartEnum.Shield] && damage.hitpoints < 10) shieldAnim.SetActive(false);
         }
     }
 
@@ -129,7 +124,7 @@ public class PlayerShip : MonoBehaviour
                 break;
         }
         shipPieces.Add(part);
-        durability += shipPart.durability;
+        damage.hitpoints += shipPart.durability;
         part.SetActive(false);
         return true;
 
@@ -177,7 +172,7 @@ public class PlayerShip : MonoBehaviour
             GameManager.getInstance().player.GetComponent<PlayerController>().Eject();
             GameManager.getInstance().player.transform.rotation = startRotation;
             inFlight = false;
-            durability = 0;
+            damage.hitpoints = 0;
             SpawnParts();
             this.transform.position = startPosition;
             this.transform.rotation = startRotation;

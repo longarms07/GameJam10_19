@@ -6,10 +6,10 @@ public class BreakIntoPieces : MonoBehaviour
 {
 
     public List<GameObject> shipPieces;
-    public int durability;
 
     private ParticleSystem explosion;
     private SpriteRenderer spriteRenderer;
+    private Damageable hp;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +17,7 @@ public class BreakIntoPieces : MonoBehaviour
 
         explosion = GetComponent<ParticleSystem>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        hp = gameObject.GetComponent<Damageable>();
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
@@ -27,15 +28,16 @@ public class BreakIntoPieces : MonoBehaviour
         {
             Debug.Log("Collision aaah! " + collision.gameObject);
             PlayerShip playerShip = GameManager.getInstance().playerShip.GetComponent<PlayerShip>();
-            if (playerShip != null)
+            Damageable dam = GameManager.getInstance().playerShip.GetComponent<Damageable>();
+            if (playerShip != null && dam !=null)
             {
                     collision.otherCollider.enabled = false;
-                    if (playerShip.durability >= durability)
+                    if (dam.hitpoints >= hp.hitpoints)
                     {
                         Kersplode();
                     }
-                    if (playerShip.durability <= durability) playerShip.Kersplode();
-                    else playerShip.durability = playerShip.durability - durability;
+                    if (dam.hitpoints <= hp.hitpoints) playerShip.Kersplode();
+                    else dam.hitpoints = dam.hitpoints - hp.hitpoints;
 
                 
             }

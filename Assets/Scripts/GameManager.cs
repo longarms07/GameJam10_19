@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
 
     private PlayerShip ship;
     private PlayerController playerController;
+    private Damageable playerHp;
+    private Damageable shipHp;
     private TextMeshProUGUI durabilityText;
     private TextMeshProUGUI scoreText;
 
@@ -43,13 +45,15 @@ public class GameManager : MonoBehaviour
         if (playerShip!=null) ship = playerShip.GetComponent<PlayerShip>();
         if (durabilityTextMesh != null) durabilityText = durabilityTextMesh.GetComponent<TextMeshProUGUI>();
         if (scoreTextMesh != null) scoreText = scoreTextMesh.GetComponent<TextMeshProUGUI>();
+        playerHp = player.GetComponent<Damageable>();
+        shipHp = playerShip.GetComponent<Damageable>();
         playerController = player.GetComponent<PlayerController>();
         score = 0;
     }
 
     private void Update()
     {
-        if(durabilityText!=null) durabilityText.text = "Ship HP: " + ship.durability+"\nPlayer HP: "+playerController.hitPoints;
+        if(durabilityText!=null) durabilityText.text = "Ship HP: " + shipHp.hitpoints+"\nPlayer HP: "+playerHp.hitpoints;
         if (scoreText != null) scoreText.text = "Score: " + score;
     }
 
