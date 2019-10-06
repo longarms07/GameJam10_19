@@ -29,6 +29,11 @@ public class PlayerShip : MonoBehaviour
     public List<GameObject> shipPieces = new List<GameObject>();
 
 
+    private void Awake()
+    {
+
+        durability = 0;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +65,7 @@ public class PlayerShip : MonoBehaviour
         {
             this.transform.localPosition = GameManager.getInstance().player.transform.localPosition;
             this.transform.localRotation = GameManager.getInstance().player.transform.localRotation;
+            if (partAttached[ShipPartEnum.Shield] && durability < 10) shieldAnim.SetActive(false);
         }
     }
 
@@ -148,6 +154,7 @@ public class PlayerShip : MonoBehaviour
         {
             inFlight = true;
             skeletonRenderer.enabled = false;
+            if (partAttached[ShipPartEnum.Shield]) shieldAnim.SetActive(true);
             return true;
         }
         return false;
@@ -162,6 +169,7 @@ public class PlayerShip : MonoBehaviour
             GameManager.getInstance().player.GetComponent<PlayerController>().Eject();
             GameManager.getInstance().player.transform.rotation = startRotation;
             inFlight = false;
+            durability = 0;
             SpawnParts();
             this.transform.position = startPosition;
             this.transform.rotation = startRotation;
@@ -202,9 +210,10 @@ public class PlayerShip : MonoBehaviour
                 {
                     part2 = Random.Range(0, shipPieces.Count);
                 }
-                shipPieces[part2].SetActive(true);
-                shipPieces[part2].transform.localPosition = this.transform.localPosition;
-                shipPieces[part2].GetComponent<Rigidbody2D>().gravityScale = 1;
+                   shipPieces[part2].SetActive(true);
+                   shipPieces[part2].transform.localPosition = this.transform.localPosition;
+                   shipPieces[part2].GetComponent<Rigidbody2D>().gravityScale = 1;
+                
             }
             shipPieces[part1].SetActive(true);
             shipPieces[part1].transform.localPosition = this.transform.localPosition;
@@ -215,7 +224,9 @@ public class PlayerShip : MonoBehaviour
             {
                 if (i != part1 && i != part2)
                 {
-                    Destroy(shipPieces[i]);
+                    GameObject toDestroy = shipPieces[i];
+                    shipPieces.Remove(toDestroy);
+                    Destroy(toDestroy);
                 }
                 else
                 {

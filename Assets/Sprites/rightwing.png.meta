@@ -95,12 +95,12 @@ TextureImporter:
       name: rightwing_red
       rect:
         serializedVersion: 2
-        x: 72
+        x: 75
         y: 31
-        width: 54
+        width: 50
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -116,12 +116,12 @@ TextureImporter:
       name: rightwing_blue
       rect:
         serializedVersion: 2
-        x: 580
+        x: 587
         y: 31
-        width: 57
+        width: 50
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

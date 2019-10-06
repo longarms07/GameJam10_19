@@ -21,6 +21,7 @@ public class BreakIntoPieces : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
+
         //Debug.Log("Collision aaah! " + collision.gameObject.layer);
         if (collision.gameObject.layer == 10) 
         {
@@ -28,13 +29,15 @@ public class BreakIntoPieces : MonoBehaviour
             PlayerShip playerShip = GameManager.getInstance().playerShip.GetComponent<PlayerShip>();
             if (playerShip != null)
             {
+                    collision.otherCollider.enabled = false;
+                    if (playerShip.durability >= durability)
+                    {
+                        Kersplode();
+                    }
+                    if (playerShip.durability <= durability) playerShip.Kersplode();
+                    else playerShip.durability = playerShip.durability - durability;
+
                 
-                if (playerShip.durability >= durability)
-                {
-                    Kersplode();
-                }
-                if (playerShip.durability <= durability) playerShip.Kersplode();
-                else playerShip.durability = playerShip.durability - durability;
             }
         }
     }
