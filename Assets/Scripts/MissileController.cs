@@ -34,7 +34,7 @@ public class MissileController : MonoBehaviour
             Kersplode();
 
             //damage 
-            Damageable hp = GameManager.getInstance().player.GetComponent<Damageable>();
+            Damageable hp = collision.gameObject.GetComponent<Damageable>();
             if (hp != null) {
                 hp.hitpoints -= damage;
             }

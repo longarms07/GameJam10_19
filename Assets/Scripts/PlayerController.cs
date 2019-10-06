@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float flightSpeed;
     public float rotateSpeed;
-    public float hitPoints;
     public bool isCarrying;
 
     public Sprite walkLeft0;
