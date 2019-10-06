@@ -12,6 +12,7 @@ public class PlayerShip : MonoBehaviour
     public GameObject lGun;
     public GameObject rGun;
     public int durability;
+    public float explodeTime;
 
     private Dictionary<ShipPartEnum, bool> partAttached;
     private SpriteRenderer skeletonRenderer;
@@ -27,6 +28,9 @@ public class PlayerShip : MonoBehaviour
     private Quaternion startRotation;
     private ParticleSystem explosion;
     public List<GameObject> shipPieces = new List<GameObject>();
+    private bool canExplode;
+    private float startTime;
+
 
 
     private void Awake()
@@ -38,6 +42,7 @@ public class PlayerShip : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        shipPieces = new List<GameObject>();
         startPosition = this.gameObject.transform.position;
         startRotation = this.gameObject.transform.rotation;
         explosion = GetComponent<ParticleSystem>();
@@ -63,6 +68,8 @@ public class PlayerShip : MonoBehaviour
     {
         if (inFlight)
         {
+            startTime += Time.deltaTime;
+            if (!canExplode && startTime >= explodeTime) canExplode = true;
             this.transform.localPosition = GameManager.getInstance().player.transform.localPosition;
             this.transform.localRotation = GameManager.getInstance().player.transform.localRotation;
             if (partAttached[ShipPartEnum.Shield] && durability < 10) shieldAnim.SetActive(false);
@@ -155,6 +162,7 @@ public class PlayerShip : MonoBehaviour
             inFlight = true;
             skeletonRenderer.enabled = false;
             if (partAttached[ShipPartEnum.Shield]) shieldAnim.SetActive(true);
+            startTime = 0;
             return true;
         }
         return false;
@@ -190,6 +198,8 @@ public class PlayerShip : MonoBehaviour
             shieldAnim.s2 = null;
             shieldAnim.s3 = null;
             shieldRenderer.sprite = null;
+            startTime = 0;
+            canExplode = false;
         }
     }
 
@@ -210,10 +220,10 @@ public class PlayerShip : MonoBehaviour
                 {
                     part2 = Random.Range(0, shipPieces.Count);
                 }
-                   shipPieces[part2].SetActive(true);
-                   shipPieces[part2].transform.localPosition = this.transform.localPosition;
-                   shipPieces[part2].GetComponent<Rigidbody2D>().gravityScale = 1;
-                
+                shipPieces[part2].SetActive(true);
+                shipPieces[part2].transform.localPosition = this.transform.localPosition;
+                shipPieces[part2].GetComponent<Rigidbody2D>().gravityScale = 1;
+
             }
             shipPieces[part1].SetActive(true);
             shipPieces[part1].transform.localPosition = this.transform.localPosition;
@@ -234,8 +244,16 @@ public class PlayerShip : MonoBehaviour
                 }
             }
         }
-        
+
     }
 
-
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Time " + startTime);
+        Debug.Log("Collision in playerShip aaah! " + collision.gameObject.layer);
+        if (collision.gameObject.layer == 0 && canExplode && inFlight)
+        {
+            Kersplode();
+        }
+    }
 }
