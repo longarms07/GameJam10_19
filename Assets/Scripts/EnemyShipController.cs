@@ -46,6 +46,8 @@ public class EnemyShipController : MonoBehaviour
         {
             retreat = false;
             rb2d.velocity = Vector2.zero;
+
+            timeSinceFire = 0;
         }
 
         //make enemy face the direction it is travelling
