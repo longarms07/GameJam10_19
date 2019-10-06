@@ -13,6 +13,8 @@ public class PlayerShip : MonoBehaviour
     public GameObject rGun;
     public float explodeTime;
     public Damageable damage;
+    public bool canBeDamaged;
+
 
     private Dictionary<ShipPartEnum, bool> partAttached;
     private SpriteRenderer skeletonRenderer;
@@ -30,6 +32,8 @@ public class PlayerShip : MonoBehaviour
     public List<GameObject> shipPieces = new List<GameObject>();
     private bool canExplode;
     private float startTime;
+    private AudioSource audioS;
+    private ExplosionAudio exAud;
 
 
     // Start is called before the first frame update
@@ -56,6 +60,8 @@ public class PlayerShip : MonoBehaviour
         partAttached[ShipPartEnum.RWing] = false;
         partAttached[ShipPartEnum.Shield] = false;
         partAttached[ShipPartEnum.Engine] = false;
+        audioS = GetComponent<AudioSource>();
+        exAud = GetComponent<ExplosionAudio>();
     }
 
     // Update is called once per frame
@@ -68,6 +74,10 @@ public class PlayerShip : MonoBehaviour
             this.transform.localPosition = GameManager.getInstance().player.transform.localPosition;
             this.transform.localRotation = GameManager.getInstance().player.transform.localRotation;
             if (partAttached[ShipPartEnum.Shield] && damage.hitpoints < 10) shieldAnim.SetActive(false);
+            if (damage.hitpoints <= 0)
+            {
+                Kersplode();
+            }
         }
     }
 
@@ -158,6 +168,7 @@ public class PlayerShip : MonoBehaviour
             skeletonRenderer.enabled = false;
             if (partAttached[ShipPartEnum.Shield]) shieldAnim.SetActive(true);
             startTime = 0;
+            audioS.Play();
             return true;
         }
         return false;
@@ -168,6 +179,8 @@ public class PlayerShip : MonoBehaviour
         Debug.Log("Kersplode!");
         if (explosion != null)
         {
+            audioS.Stop();
+            exAud.explode();
             explosion.Play();
             GameManager.getInstance().player.GetComponent<PlayerController>().Eject();
             GameManager.getInstance().player.transform.rotation = startRotation;

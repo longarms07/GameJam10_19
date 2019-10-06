@@ -10,11 +10,13 @@ public class BreakIntoPieces : MonoBehaviour
     private ParticleSystem explosion;
     private SpriteRenderer spriteRenderer;
     private Damageable hp;
+    private ExplosionAudio exAud;
 
     // Start is called before the first frame update
     void Start()
     {
 
+        exAud = GetComponent<ExplosionAudio>();
         explosion = GetComponent<ParticleSystem>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         hp = gameObject.GetComponent<Damageable>();
@@ -50,6 +52,7 @@ public class BreakIntoPieces : MonoBehaviour
         spriteRenderer.sprite = null;
         if (explosion != null)
         {
+            exAud.explode();
             explosion.Play();
             SpawnParts();
             Destroy(this.gameObject, explosion.main.duration);
