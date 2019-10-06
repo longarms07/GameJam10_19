@@ -70,7 +70,7 @@ public class PlayerShip : MonoBehaviour
         if (inFlight)
         {
             startTime += Time.deltaTime;
-            if(startTime>2 && !canBeDamaged)
+            if(startTime>1 && !canBeDamaged)
                 canBeDamaged = true;
             if (!canExplode && startTime >= explodeTime) canExplode = true;
             this.transform.localPosition = GameManager.getInstance().player.transform.localPosition;
@@ -261,7 +261,7 @@ public class PlayerShip : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Time " + startTime);
+        //Debug.Log("Time " + startTime);
         Debug.Log("Collision in playerShip aaah! " + collision.gameObject.layer);
         if (collision.gameObject.layer == 0 && canExplode && inFlight)
         {
