@@ -5,6 +5,7 @@ using UnityEngine;
 public class MissileController : MonoBehaviour
 {
     public EnemyShipController ship;
+    public int damage;
 
     private ParticleSystem explosion;
     private SpriteRenderer spriteRenderer;
@@ -31,6 +32,13 @@ public class MissileController : MonoBehaviour
         {
             collisionBox.enabled = false;
             Kersplode();
+
+            Debug.Log(collision.gameObject.layer);
+
+            //player damage
+            if (collision.gameObject.layer == 9) {
+                GameManager.getInstance().player.GetComponent<PlayerController>().hitPoints -= damage;
+            }
         }
     }
 
