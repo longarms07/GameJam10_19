@@ -66,7 +66,11 @@ public class EnemyShipController : MonoBehaviour
                 tempMissile = Instantiate(missile);
 
                 tempMissile.transform.localPosition = transform.localPosition;
-                tempMissile.transform.localPosition -= (missileOffset * tempMissile.transform.position.normalized);
+
+                //missile position offset (prevents it from colliding with ship)
+                Vector2 missileOffsetVect = -missileOffset * offsetFromTarget.normalized;
+                tempMissile.transform.localPosition = new Vector2(transform.localPosition.x + missileOffsetVect.x, transform.localPosition.y + missileOffsetVect.y);
+
 
                 Rigidbody2D missileRb = tempMissile.GetComponent<Rigidbody2D>();
                 if (missileRb != null) {
