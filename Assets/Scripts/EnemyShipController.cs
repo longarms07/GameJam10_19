@@ -29,6 +29,8 @@ public class EnemyShipController : MonoBehaviour
 
     void FixedUpdate()
     {
+        GameObject tempMissile = null;
+
         timeSinceFire += Time.deltaTime;
 
         Vector2 target = GameManager.getInstance().player.transform.localPosition;
@@ -59,10 +61,10 @@ public class EnemyShipController : MonoBehaviour
 
             if (timeSinceFire >= fireInterval) {
 
-                GameObject tempMissile = Instantiate(missile);
+                tempMissile = Instantiate(missile);
 
                 tempMissile.transform.localPosition = transform.localPosition;
-                tempMissile.transform.localPosition += (missileOffset * tempMissile.transform.localPosition.normalized);
+                tempMissile.transform.localPosition -= (missileOffset * tempMissile.transform.position.normalized);
 
                 Rigidbody2D missileRb = tempMissile.GetComponent<Rigidbody2D>();
                 if (missileRb != null) {
@@ -78,6 +80,9 @@ public class EnemyShipController : MonoBehaviour
 
 
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotateSpeed * Time.deltaTime);
+
+        //missile rotation
+        if (tempMissile != null) { tempMissile.transform.rotation = transform.rotation; }
 
     }
 
