@@ -40,9 +40,10 @@ public class PlayerController : MonoBehaviour
     private bool onShip;
     private Rigidbody2D rigid;
 
-
+    Damageable hp;
 
     private Rigidbody2D rb2d;
+
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +53,8 @@ public class PlayerController : MonoBehaviour
         if(playerShip!=null) ship = playerShip.GetComponent<PlayerShip>();
         rigid = this.GetComponent<Rigidbody2D>();
         GameManager.getInstance().player = this.gameObject;
+
+        hp = GetComponent<Damageable>();
     }
 
     // FixedUpdate is called at regular intervals
@@ -176,6 +179,12 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
+        }
+
+        //game over?
+        if (hp != null && hp.hitpoints <= 0) {
+            GameManager.getInstance().GameOver();
+            spriteRenderer.sprite = null;
         }
     }
 
