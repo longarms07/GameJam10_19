@@ -14,6 +14,7 @@ public class EnemyShipController : MonoBehaviour
     public float retreatMultiplier;
     public float fireInterval;
     public float missileSpeed;
+    public float missileOffset;
 
     public GameObject missile;
 
@@ -61,8 +62,9 @@ public class EnemyShipController : MonoBehaviour
                 GameObject tempMissile = Instantiate(missile);
 
                 tempMissile.transform.localPosition = transform.localPosition;
+                tempMissile.transform.localPosition += (missileOffset * tempMissile.transform.localPosition.normalized);
 
-                Rigidbody2D missileRb = GetComponent<Rigidbody2D>();
+                Rigidbody2D missileRb = tempMissile.GetComponent<Rigidbody2D>();
                 if (missileRb != null) {
                     missileRb.AddForce(offsetFromTarget.normalized * -missileSpeed);
                 }

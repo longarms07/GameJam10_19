@@ -623,7 +623,8 @@ MonoBehaviour:
   retreatUntil: 20
   retreatMultiplier: 3
   fireInterval: 2
-  missileSpeed: 6
+  missileSpeed: 100
+  missileOffset: 5
   missile: {fileID: 9023949515608325925, guid: 32f13c7a2d97144cbbe34c57bc146d8b, type: 3}
 --- !u!61 &1714861575
 BoxCollider2D:
