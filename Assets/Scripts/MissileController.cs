@@ -10,6 +10,7 @@ public class MissileController : MonoBehaviour
     private ParticleSystem explosion;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D collisionBox;
+    private Rigidbody2D rb2d;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,7 @@ public class MissileController : MonoBehaviour
         explosion = GetComponent<ParticleSystem>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         collisionBox = GetComponent<BoxCollider2D>();
+        rb2d = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame

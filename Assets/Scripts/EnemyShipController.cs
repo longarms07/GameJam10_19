@@ -12,8 +12,14 @@ public class EnemyShipController : MonoBehaviour
     public float retreatThreshold;
     public float retreatUntil;
     public float retreatMultiplier;
+    public float fireInterval;
+    public float missileSpeed;
+    public float missileOffset;
+
+    public GameObject missile;
 
     private bool retreat;
+    private float timeSinceFire;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +29,10 @@ public class EnemyShipController : MonoBehaviour
 
     void FixedUpdate()
     {
+        GameObject tempMissile = null;
+
+        timeSinceFire += Time.deltaTime;
+
         Vector2 target = GameManager.getInstance().player.transform.localPosition;
 
         Vector2 offsetFromTarget = new Vector2(transform.position.x, transform.position.y) - target;
@@ -48,6 +58,21 @@ public class EnemyShipController : MonoBehaviour
         }
         else {
             rb2d.velocity = offsetFromTarget.normalized * -speed;
+
+            if (timeSinceFire >= fireInterval) {
+
+                tempMissile = Instantiate(missile);
+
+                tempMissile.transform.localPosition = transform.localPosition;
+                tempMissile.transform.localPosition -= (missileOffset * tempMissile.transform.position.normalized);
+
+                Rigidbody2D missileRb = tempMissile.GetComponent<Rigidbody2D>();
+                if (missileRb != null) {
+                    missileRb.AddForce(offsetFromTarget.normalized * -missileSpeed);
+                }
+
+                timeSinceFire = 0;
+            }
         }
 
         float angle = Mathf.Atan2(face.x, face.y) * Mathf.Rad2Deg * -1;
@@ -55,6 +80,9 @@ public class EnemyShipController : MonoBehaviour
 
 
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotateSpeed * Time.deltaTime);
+
+        //missile rotation
+        if (tempMissile != null) { tempMissile.transform.rotation = transform.rotation; }
 
     }
 
