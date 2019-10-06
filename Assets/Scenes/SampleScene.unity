@@ -5235,7 +5235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ship: {fileID: 0}
-  damage: 0
+  damage: 100
 --- !u!1 &1122349496
 GameObject:
   m_ObjectHideFlags: 0
