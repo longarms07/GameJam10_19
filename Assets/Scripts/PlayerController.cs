@@ -143,9 +143,14 @@ public class PlayerController : MonoBehaviour
             }
             currentFrame++;
             lastMoveDir = moveHorizontal;
-            Vector2 movement = new Vector2(moveHorizontal, 0);
+            Vector2 movement = new Vector2(moveHorizontal + transform.position.x, transform.position.y);
 
-            rb2d.AddForce(movement * speed);
+
+            //actually move the player
+            float step = speed * Time.deltaTime;
+            transform.position = Vector2.MoveTowards(transform.position, movement, step);
+
+
             if (isCarrying && heldPart != null)
             {
                 if (lookingLeft) heldPart.transform.localPosition = this.gameObject.transform.localPosition + new Vector3(0, partOffset, 1);
