@@ -41,16 +41,17 @@ public class EnemyShipController : MonoBehaviour
         //make enemy face the direction it is travelling
         Vector2 face = target - new Vector2(transform.position.x, transform.position.y);
 
-        float angle = Mathf.Atan2(face.x, face.y) * Mathf.Rad2Deg * -1;
-        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
         if (retreat)
         {
+            face *= -1;
             rb2d.AddForce(offsetFromTarget.normalized * retreatMultiplier * speed);
         }
         else {
             rb2d.velocity = offsetFromTarget.normalized * -speed;
         }
+
+        float angle = Mathf.Atan2(face.x, face.y) * Mathf.Rad2Deg * -1;
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
 
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotateSpeed * Time.deltaTime);
