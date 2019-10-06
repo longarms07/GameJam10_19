@@ -31,16 +31,19 @@ public class BreakIntoPieces : MonoBehaviour
             Debug.Log("Collision aaah! " + collision.gameObject);
             PlayerShip playerShip = GameManager.getInstance().playerShip.GetComponent<PlayerShip>();
             Damageable dam = GameManager.getInstance().playerShip.GetComponent<Damageable>();
-            if (playerShip != null && dam !=null)
+            if (playerShip != null && dam !=null && playerShip.canBeDamaged)
             {
                     collision.otherCollider.enabled = false;
                     if (dam.hitpoints >= hp.hitpoints)
                     {
+                        dam.hitpoints = dam.hitpoints - hp.hitpoints;
                         Kersplode();
                     }
-                    if (dam.hitpoints <= hp.hitpoints) playerShip.Kersplode();
-                    else dam.hitpoints = dam.hitpoints - hp.hitpoints;
-
+                if (dam.hitpoints <= hp.hitpoints)
+                {
+                    hp.hitpoints = hp.hitpoints - dam.hitpoints;
+                    playerShip.Kersplode();
+                }
                 
             }
         }

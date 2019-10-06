@@ -41,7 +41,9 @@ public class MissileController : MonoBehaviour
             //damage 
             Damageable hp = collision.gameObject.GetComponent<Damageable>();
             if (hp != null) {
-                hp.hitpoints -= damage;
+                if(collision.gameObject != GameManager.getInstance().playerShip
+                    || !GameManager.getInstance().playerShip.GetComponent<PlayerShip>().canBeDamaged)
+                    hp.hitpoints -= damage;
             }
         }
     }

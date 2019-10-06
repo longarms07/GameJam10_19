@@ -13,7 +13,7 @@ public class PlayerShip : MonoBehaviour
     public GameObject rGun;
     public float explodeTime;
     public Damageable damage;
-    public bool canBeDamaged;
+    public bool canBeDamaged = false;
 
 
     private Dictionary<ShipPartEnum, bool> partAttached;
@@ -70,6 +70,8 @@ public class PlayerShip : MonoBehaviour
         if (inFlight)
         {
             startTime += Time.deltaTime;
+            if(startTime>2 && !canBeDamaged)
+                canBeDamaged = true;
             if (!canExplode && startTime >= explodeTime) canExplode = true;
             this.transform.localPosition = GameManager.getInstance().player.transform.localPosition;
             this.transform.localRotation = GameManager.getInstance().player.transform.localRotation;
@@ -176,9 +178,11 @@ public class PlayerShip : MonoBehaviour
 
     public void Kersplode()
     {
+        canBeDamaged = false;
         Debug.Log("Kersplode!");
         if (explosion != null)
         {
+            
             audioS.Stop();
             exAud.explode();
             explosion.Play();
