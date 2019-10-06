@@ -11,6 +11,7 @@ public class BreakIntoPieces : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Damageable hp;
     private ExplosionAudio exAud;
+    private bool Kersploding = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,27 +23,45 @@ public class BreakIntoPieces : MonoBehaviour
         hp = gameObject.GetComponent<Damageable>();
     }
 
+     void Update()
+    {
+        if (hp.hitpoints <= 0)
+        {
+            Debug.Log("Hp less than 0");
+            Kersplode();
+        }
+    }
+
     public void OnCollisionEnter2D(Collision2D collision)
     {
 
-        //Debug.Log("Collision aaah! " + collision.gameObject.layer);
+        Debug.Log("Collision aaah! " + collision.gameObject.layer + (collision.gameObject.layer == 10));
         if (collision.gameObject.layer == 10) 
         {
             Debug.Log("Collision aaah! " + collision.gameObject);
             PlayerShip playerShip = GameManager.getInstance().playerShip.GetComponent<PlayerShip>();
-            Damageable dam = GameManager.getInstance().playerShip.GetComponent<Damageable>();
+            Damageable dam = GetComponent<Damageable>();
+            Debug.Log("playerShip != null"+ playerShip != null);
+            Debug.Log("dam !=null"+ dam != null);
+            Debug.Log("playerShip.canBeDamaged"+ playerShip.canBeDamaged);
             if (playerShip != null && dam !=null && playerShip.canBeDamaged)
             {
-                    collision.otherCollider.enabled = false;
-                    if (dam.hitpoints >= hp.hitpoints)
+                Debug.Log("Here");
+                collision.otherCollider.enabled = false;
+                if (dam.hitpoints > hp.hitpoints)
                     {
                         dam.hitpoints = dam.hitpoints - hp.hitpoints;
                         Kersplode();
                     }
-                if (dam.hitpoints <= hp.hitpoints)
+                else if (dam.hitpoints < hp.hitpoints)
                 {
                     hp.hitpoints = hp.hitpoints - dam.hitpoints;
                     playerShip.Kersplode();
+                }
+                else
+                {
+                    playerShip.Kersplode();
+                    Kersplode();
                 }
                 
             }
@@ -52,9 +71,10 @@ public class BreakIntoPieces : MonoBehaviour
     public void Kersplode()
     {
         
-        spriteRenderer.sprite = null;
-        if (explosion != null)
+        if(explosion != null && !Kersploding)
         {
+            Kersploding = true;
+            spriteRenderer.sprite = null;
             exAud.explode();
             explosion.Play();
             SpawnParts();

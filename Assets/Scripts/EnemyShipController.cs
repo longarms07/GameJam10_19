@@ -65,6 +65,7 @@ public class EnemyShipController : MonoBehaviour
 
                 tempMissile = Instantiate(missile);
 
+                tempMissile.GetComponent<MissileController>().spawner = this.gameObject;
                 tempMissile.transform.localPosition = transform.localPosition;
 
                 //missile position offset (prevents it from colliding with ship)

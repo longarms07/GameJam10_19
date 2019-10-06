@@ -6,6 +6,7 @@ public class MissileController : MonoBehaviour
 {
     public EnemyShipController ship;
     public int damage;
+    public GameObject spawner;
 
     private ParticleSystem explosion;
     private SpriteRenderer spriteRenderer;
@@ -32,18 +33,22 @@ public class MissileController : MonoBehaviour
     // Called automatically on collision
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if((collision.gameObject.layer >= 8 && collision.gameObject.layer <= 11) || collision.gameObject.layer == 0)
+        if (collision.gameObject != spawner)
         {
-            if(collisionBox!=null)
-                collisionBox.enabled = false;
-            Kersplode();
+            if ((collision.gameObject.layer >= 8 && collision.gameObject.layer <= 11) || collision.gameObject.layer == 0)
+            {
+                if (collisionBox != null)
+                    collisionBox.enabled = false;
+                Kersplode();
 
-            //damage 
-            Damageable hp = collision.gameObject.GetComponent<Damageable>();
-            if (hp != null) {
-                if(collision.gameObject != GameManager.getInstance().playerShip
-                    || !GameManager.getInstance().playerShip.GetComponent<PlayerShip>().canBeDamaged)
-                    hp.hitpoints -= damage;
+                //damage 
+                Damageable hp = collision.gameObject.GetComponent<Damageable>();
+                if (hp != null)
+                {
+                    if (collision.gameObject != GameManager.getInstance().playerShip
+                        || GameManager.getInstance().playerShip.GetComponent<PlayerShip>().canBeDamaged)
+                        hp.hitpoints -= damage;
+                }
             }
         }
     }
