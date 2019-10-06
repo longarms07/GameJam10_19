@@ -128,9 +128,9 @@ MonoBehaviour:
   retreatThreshold: 5
   retreatUntil: 20
   retreatMultiplier: 3
-  fireInterval: 2
+  fireInterval: 4
   missileSpeed: 300
-  missileOffset: 0.3
+  missileOffset: 0.6
   missile: {fileID: 9023949515608325925, guid: 32f13c7a2d97144cbbe34c57bc146d8b, type: 3}
 --- !u!61 &8583137824094252762
 BoxCollider2D:
@@ -202,6 +202,7 @@ MonoBehaviour:
   - {fileID: 7689971039822596170, guid: c5743599c7ce2b844b49bfe5256e3605, type: 3}
   - {fileID: 6190305559219688754, guid: 6d046d0bc54d82646b8ee0cd38f65df3, type: 3}
   - {fileID: 8696665738646894234, guid: 73f7a759a6b89cc43aa261ef4ddb43dd, type: 3}
+  score: 100
 --- !u!82 &8583137824094252756
 AudioSource:
   m_ObjectHideFlags: 0

@@ -6,12 +6,14 @@ public class BreakIntoPieces : MonoBehaviour
 {
 
     public List<GameObject> shipPieces;
+    public int score;
 
     private ParticleSystem explosion;
     private SpriteRenderer spriteRenderer;
     private Damageable hp;
     private ExplosionAudio exAud;
     private bool Kersploding = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -78,6 +80,7 @@ public class BreakIntoPieces : MonoBehaviour
             exAud.explode();
             explosion.Play();
             SpawnParts();
+            GameManager.getInstance().score += score;
             Destroy(this.gameObject, explosion.main.duration);
         }
     }
