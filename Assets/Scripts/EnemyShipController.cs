@@ -12,8 +12,13 @@ public class EnemyShipController : MonoBehaviour
     public float retreatThreshold;
     public float retreatUntil;
     public float retreatMultiplier;
+    public float fireInterval;
+    public float missileSpeed;
+
+    public GameObject missile;
 
     private bool retreat;
+    private float timeSinceFire;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +28,8 @@ public class EnemyShipController : MonoBehaviour
 
     void FixedUpdate()
     {
+        timeSinceFire += Time.deltaTime;
+
         Vector2 target = GameManager.getInstance().player.transform.localPosition;
 
         Vector2 offsetFromTarget = new Vector2(transform.position.x, transform.position.y) - target;
@@ -48,6 +55,20 @@ public class EnemyShipController : MonoBehaviour
         }
         else {
             rb2d.velocity = offsetFromTarget.normalized * -speed;
+
+            if (timeSinceFire >= fireInterval) {
+
+                GameObject tempMissile = Instantiate(missile);
+
+                tempMissile.transform.localPosition = transform.localPosition;
+
+                Rigidbody2D missileRb = GetComponent<Rigidbody2D>();
+                if (missileRb != null) {
+                    missileRb.AddForce(offsetFromTarget.normalized * -missileSpeed);
+                }
+
+                timeSinceFire = 0;
+            }
         }
 
         float angle = Mathf.Atan2(face.x, face.y) * Mathf.Rad2Deg * -1;
