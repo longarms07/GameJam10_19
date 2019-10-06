@@ -38,6 +38,12 @@ public class EnemyShipController : MonoBehaviour
             rb2d.velocity = Vector2.zero;
         }
 
+        //make enemy face the direction it is travelling
+        Vector2 face = target - new Vector2(transform.position.x, transform.position.y);
+
+        float angle = Mathf.Atan2(face.x, face.y) * Mathf.Rad2Deg * -1;
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
         if (retreat)
         {
             rb2d.AddForce(offsetFromTarget.normalized * retreatMultiplier * speed);
@@ -46,7 +52,8 @@ public class EnemyShipController : MonoBehaviour
             rb2d.velocity = offsetFromTarget.normalized * -speed;
         }
 
-        
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotateSpeed * Time.deltaTime);
 
     }
 

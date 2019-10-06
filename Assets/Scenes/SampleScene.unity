@@ -605,7 +605,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   rotateSpeed: 3
-  retreatThreshold: 7
+  retreatThreshold: 5
   retreatUntil: 15
   retreatMultiplier: 4
 --- !u!61 &1714861575
@@ -666,6 +666,7 @@ MonoBehaviour:
   interactionKey: e
   boardShipKey: q
   player: {fileID: 1122349496}
+  playerShip: {fileID: 0}
 --- !u!4 &1821164498
 Transform:
   m_ObjectHideFlags: 0
