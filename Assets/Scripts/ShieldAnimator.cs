@@ -39,7 +39,8 @@ public class ShieldAnimator : MonoBehaviour
 
     public void SetActive(bool set)
     {
-        if (set) currentFrame = 0;
+        currentFrame = 0;
+        spriteRenderer.sprite = s0;
         active = set;
     }
 }

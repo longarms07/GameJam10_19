@@ -95,13 +95,13 @@ TextureImporter:
       name: gun_red
       rect:
         serializedVersion: 2
-        x: 381
-        y: 32
-        width: 29
-        height: 43
+        x: 390
+        y: 34
+        width: 16
+        height: 41
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 9, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -116,12 +116,12 @@ TextureImporter:
       name: gun_blue
       rect:
         serializedVersion: 2
-        x: 515
-        y: 33
-        width: 21
-        height: 44
+        x: 518
+        y: 34
+        width: 16
+        height: 41
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

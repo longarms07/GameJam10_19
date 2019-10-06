@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -10,6 +11,11 @@ public class GameManager : MonoBehaviour
     public string boardShipKey;
     public GameObject player;
     public GameObject playerShip;
+    public GameObject durabilityTextMesh;
+
+    
+    private PlayerShip ship;
+    private TextMeshProUGUI durabilityText;
 
     private GameManager() {
 
@@ -26,6 +32,18 @@ public class GameManager : MonoBehaviour
         {
             g = this;
         }
+    }
+
+    private void Start()
+    {
+        if (playerShip!=null) ship = playerShip.GetComponent<PlayerShip>();
+        if (durabilityTextMesh != null) durabilityText = durabilityTextMesh.GetComponent<TextMeshProUGUI>();
+        
+    }
+
+    private void Update()
+    {
+        if(durabilityText!=null) durabilityText.text = "Ship HP: " + ship.durability;
     }
 
 }
