@@ -437,7 +437,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 899348476}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.85, y: -3.09, z: -1.4826525}
+  m_LocalPosition: {x: -0.59, y: -1.17, z: -1.4826525}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5249,6 +5249,7 @@ GameObject:
   - component: {fileID: 1122349498}
   - component: {fileID: 1122349497}
   - component: {fileID: 1122349501}
+  - component: {fileID: 1122349502}
   m_Layer: 9
   m_Name: Astronaut
   m_TagString: Untagged
@@ -5382,7 +5383,6 @@ MonoBehaviour:
   speed: 10
   flightSpeed: 0
   rotateSpeed: 0
-  hitPoints: 100
   isCarrying: 0
   walkLeft0: {fileID: -7433986902432109443, guid: 621242efd6e9ce643b54fa208580d0be,
     type: 3}
@@ -5412,6 +5412,19 @@ MonoBehaviour:
   raycastDistance: 3
   partOffset: 1
   playerShip: {fileID: 0}
+--- !u!114 &1122349502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122349496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edf177faca6574518b2d4d5edbf19767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitpoints: 100
 --- !u!1 &1714861570
 GameObject:
   m_ObjectHideFlags: 0
@@ -5425,6 +5438,7 @@ GameObject:
   - component: {fileID: 1714861573}
   - component: {fileID: 1714861574}
   - component: {fileID: 1714861575}
+  - component: {fileID: 1714861576}
   m_Layer: 11
   m_Name: EnemyShip
   m_TagString: Untagged
@@ -5490,7 +5504,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1714861570}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.39, y: -0.93, z: -0.6}
+  m_LocalPosition: {x: -4.75, y: -0.31, z: -0.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5560,6 +5574,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.28, y: 1.28}
   m_EdgeRadius: 0
+--- !u!114 &1714861576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714861570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edf177faca6574518b2d4d5edbf19767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitpoints: 100
 --- !u!1 &1821164496
 GameObject:
   m_ObjectHideFlags: 0
