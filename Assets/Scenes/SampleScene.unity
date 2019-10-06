@@ -603,11 +603,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc73eb93b5d304ea28bbc21d6ba49e15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 3
   rotateSpeed: 3
   retreatThreshold: 5
-  retreatUntil: 15
-  retreatMultiplier: 4
+  retreatUntil: 20
+  retreatMultiplier: 3
 --- !u!61 &1714861575
 BoxCollider2D:
   m_ObjectHideFlags: 0
